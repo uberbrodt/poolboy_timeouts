@@ -5,11 +5,11 @@ defmodule PoolboyTimeouts.Handlers.EventHandler2 do
   alias PoolboyTimeouts.Events.SomethingCreated
 
   def handler(%SomethingCreated{}, %{}) do
-    loop_for_awhile(System.monotonic_time(:second) + 1)
+    loop_for_awhile(System.monotonic_time(:millisecond) + 200)
   end
 
   defp loop_for_awhile(time) do
-    if System.monotonic_time(:second) >= time do
+    if System.monotonic_time(:millisecond) >= time do
       :ok
     else
       loop_for_awhile(time)
